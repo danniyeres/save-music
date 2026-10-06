@@ -9,7 +9,7 @@ from bot.services.search import search_tracks
 router = Router()
 
 
-@router.message
+@router.message(F.text & ~F.text.startswith("/"))
 async def select_song_handler(message: types.Message):
   query = message.text
   status_msg = await message.answer(
